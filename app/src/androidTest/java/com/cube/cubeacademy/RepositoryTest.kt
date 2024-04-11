@@ -24,6 +24,10 @@ private const val REASON = "reason"
 
 private const val PROCESS = "process"
 
+private const val DATE_SUBMITTED = "2023-10-11"
+
+private const val DATE_CLOSED = "2023-11-11"
+
 @HiltAndroidTest
 class RepositoryTest {
     @get:Rule
@@ -41,10 +45,10 @@ class RepositoryTest {
     fun getNominationsTest() = runBlocking {//added to tests on suspend functions
         val result = Repository(MockApiService()).getAllNominations()
         val expected = listOf(
-            Nomination(ID1, ID1, REASON, PROCESS, "2023-10-11", "2023-11-11"),
-            Nomination(ID2, ID2, REASON, PROCESS, "2023-10-11", "2023-11-11"),
-            Nomination(ID1, ID3, REASON, PROCESS, "2023-10-11", "2023-11-11"),
-            Nomination(ID2, "4", REASON, PROCESS, "2023-10-11", "2023-11-11"),
+            Nomination(ID1, ID1, REASON, PROCESS, DATE_SUBMITTED, DATE_CLOSED),
+            Nomination(ID2, ID2, REASON, PROCESS, DATE_SUBMITTED, DATE_CLOSED),
+            Nomination(ID1, ID3, REASON, PROCESS, DATE_SUBMITTED, DATE_CLOSED),
+            Nomination(ID2, "4", REASON, PROCESS, DATE_SUBMITTED, DATE_CLOSED),
         )
 
         assertEquals(expected, result);
