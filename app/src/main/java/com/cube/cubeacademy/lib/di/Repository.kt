@@ -7,7 +7,7 @@ import java.time.LocalDate
 import java.util.stream.IntStream
 
 class Repository(val api: ApiService) {
-    // TODO: Add additional code if you need it
+    // TODO: Add additional code if you need it :: TRY TO USE FOR THE NOMINATION ID
 
     suspend fun getAllNominations(): List<Nomination> {
         return api.getAllNominations().data
@@ -18,19 +18,16 @@ class Repository(val api: ApiService) {
     }
 
     suspend fun createNomination(nomineeId: String, reason: String, process: String): Nomination? {
-        // TODO: Write the code to create a new nomination using the api
-        // TODO: change Close date to the end of the month created instead of an added month.
-        // I Chose to increment the closing date by a month of the day created. As these are monthly employee nominations.
-        // I set that are a variable in case microsecond discrepancy causes issue
-        val createDate = LocalDate.now()
-        val newNominationId = api.getAllNominations().data.last().nominationId.toInt().plus(1); //done this way to increment based of last in api list of nominations.
+        val createDate = LocalDate.now(); //done this way to increment based of last in api list of nominations.
         return Nomination(
-            newNominationId.toString(),
+            "", //FIXME :: Get the nominationID from the user logged in as they are the ones Nominating the Nominee
             nomineeId,
             reason,
             process,
             createDate.toString(),
-            createDate.plusMonths(1).toString()
+            createDate.plusMonths(1).withDayOfMonth(1).toString()
         )
+        // I Chose to set the close date to the first of the month after of the date nomination created. As these are monthly employee nominations, so would close by the start of the next month.
+        // I set that are a variable in case microsecond discrepancy causes issue
     }
 }

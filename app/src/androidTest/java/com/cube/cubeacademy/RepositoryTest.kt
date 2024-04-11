@@ -11,6 +11,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import java.time.LocalDate
 import javax.inject.Inject
 
 private const val ID1 = "1"
@@ -62,10 +63,19 @@ class RepositoryTest {
     }
 
     @Test
-    fun createNominationTest()  = runBlocking{
-        // TODO: Write a test for creating a new nomination using the mock api
+    fun createNominationTest() = runBlocking {
+        // TODO: Come back and implement correct Nomination Date
         val result = Repository(MockApiService()).createNomination(ID1, REASON, PROCESS)
-        val expected = Nomination("3",ID1, REASON, PROCESS,"2023-10-11","2024-04-11");
+        val nominationCreateDate = LocalDate.now()
+        val expected = Nomination(
+            "",
+            ID1,
+            REASON,
+            PROCESS,
+            nominationCreateDate.toString(),
+            nominationCreateDate.plusMonths(1).withDayOfMonth(1).toString());
         assertEquals(expected, result);
     }
+
+    // would like to add Parametrized nominationClosesWithinCreatedMonth if I have the time
 }
