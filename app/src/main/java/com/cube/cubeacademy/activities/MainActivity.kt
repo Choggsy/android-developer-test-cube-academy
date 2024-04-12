@@ -4,9 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isNotEmpty
 import com.cube.cubeacademy.databinding.ActivityMainBinding
+import com.cube.cubeacademy.databinding.ViewNominationListItemBinding
+import com.cube.cubeacademy.lib.adapters.NominationsRecyclerViewAdapter
 import com.cube.cubeacademy.lib.di.Repository
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -24,24 +28,29 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-		makeNominationButtonListener()
+        makeNominationButtonListener()
         populateUI()
     }
 
-	private fun makeNominationButtonListener() {
-		makeNominationButton = binding.createButton
-		makeNominationButton.setOnClickListener {
-			startActivity(Intent(this, CreateNominationActivity::class.java))
-		}
-	}
+    private fun makeNominationButtonListener() {
+        makeNominationButton = binding.createButton
+        makeNominationButton.setOnClickListener {
+            startActivity(Intent(this, CreateNominationActivity::class.java))
+        }
+    }
 
-	private fun populateUI() {
+
+    private fun populateUI() {
         /**
          * TODO: Populate the UI with data in this function
          * 		 You need to fetch the list of user's nominations from the api and put the data in the recycler view
          * 		 And also add action to the "Create new nomination" button to go to the CreateNominationActivity
          */
-        //suspend issue. research.
-        //Psedo : repository.getAllNominations() if List.empty() -> load 01.00 homescreen. Else use recycler to populate the UI.
+        //FIXME :: come back after wiring the rest of the site to see if this worked lol
+        //used runBlocking for the async call as an alternative to using Suspend throughout the hierarchy.
+//        val nominationList = runBlocking { repository.getAllNominations() } //could us this in IF
+        if(binding.nominationsList.isNotEmpty()){
+            NominationsRecyclerViewAdapter.ViewHolder(ViewNominationListItemBinding.bind(binding.nominationsList))
+        }
     }
 }
