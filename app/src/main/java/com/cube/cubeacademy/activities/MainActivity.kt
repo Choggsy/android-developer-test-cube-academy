@@ -11,6 +11,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 	private lateinit var binding: ActivityMainBinding
 
+
 	@Inject
 	lateinit var repository: Repository
 
@@ -29,5 +30,7 @@ class MainActivity : AppCompatActivity() {
 		 * 		 You need to fetch the list of user's nominations from the api and put the data in the recycler view
 		 * 		 And also add action to the "Create new nomination" button to go to the CreateNominationActivity
 		 */
+		//suspend issue. research.
+		//Psedo : repository.getAllNominations() if List.empty() -> load 01.00 homescreen. Else use recycler to populate the UI.
 	}
 }

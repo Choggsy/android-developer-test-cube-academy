@@ -83,9 +83,9 @@
 		android:paddingVertical="20dp">
 
 		<androidx.appcompat.widget.AppCompatButton
+			android:id="@+id/create_button"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:id="@+id/create_button"
 			style="@style/button"
 			android:text="@string/create_new_nomination" />
 

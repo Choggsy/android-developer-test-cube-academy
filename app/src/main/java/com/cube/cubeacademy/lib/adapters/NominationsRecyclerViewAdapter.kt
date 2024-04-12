@@ -21,6 +21,7 @@ class NominationsRecyclerViewAdapter : ListAdapter<Nomination, NominationsRecycl
 		holder.binding.apply {
 			/**
 			 * TODO: This should show the nominee name instead of their id! Where can you get their name from?
+			 * // Just name.text - since that is the Name input in the nomination. Would like to TDD this before implementation
 			 */
 			name.text = item.nomineeId
 			reason.text = item.reason

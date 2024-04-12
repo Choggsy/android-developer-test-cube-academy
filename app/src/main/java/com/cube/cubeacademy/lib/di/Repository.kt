@@ -9,6 +9,9 @@ import java.util.stream.IntStream
 class Repository(val api: ApiService) {
     // TODO: Add additional code if you need it :: TRY TO USE FOR THE NOMINATION ID
 
+//    - As part of the logic of the code, the basic DI modules and the retrofit instance and endpoints have already been defined, but they are not being used.
+//  - You should update the [Repository] class to work with the API.
+
     suspend fun getAllNominations(): List<Nomination> {
         return api.getAllNominations().data
     }
