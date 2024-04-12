@@ -25,6 +25,9 @@ class CreateNominationActivity : AppCompatActivity() {
 
 		backButtonListener()
 		populateUI()
+
+		//Spinner Element
+
 	}
 
 	private fun backButtonListener() {
