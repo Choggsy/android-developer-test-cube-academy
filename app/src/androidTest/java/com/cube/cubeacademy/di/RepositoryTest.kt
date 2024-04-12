@@ -1,6 +1,6 @@
-package com.cube.cubeacademy
+package com.cube.cubeacademy.di
 
-import com.cube.cubeacademy.di.MockApiService
+import com.cube.cubeacademy.MockApiService
 import com.cube.cubeacademy.lib.di.Repository
 import com.cube.cubeacademy.lib.models.Nomination
 import com.cube.cubeacademy.lib.models.Nominee

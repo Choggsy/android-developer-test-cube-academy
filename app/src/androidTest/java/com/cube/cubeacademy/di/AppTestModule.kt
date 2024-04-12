@@ -3,6 +3,7 @@ package com.cube.cubeacademy.di
 import android.app.Application
 import android.content.Context
 import androidx.test.runner.AndroidJUnitRunner
+import com.cube.cubeacademy.MockApiService
 import com.cube.cubeacademy.lib.api.ApiService
 import com.cube.cubeacademy.lib.di.AppModule
 import com.cube.cubeacademy.lib.di.Repository

@@ -1,4 +1,4 @@
-package com.cube.cubeacademy.di
+package com.cube.cubeacademy
 
 import com.cube.cubeacademy.lib.api.ApiService
 import com.cube.cubeacademy.lib.models.DataWrapper
