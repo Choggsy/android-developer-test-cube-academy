@@ -13,6 +13,10 @@ import kotlinx.coroutines.runBlocking
 
 class NominationsRecyclerViewAdapter :
     ListAdapter<Nomination, NominationsRecyclerViewAdapter.ViewHolder>(DIFF_CALLBACK) {
+
+    //        FIXME:: could use if first solution doesnt work
+    //        @Inject
+//	lateinit var repository: Repository
     class ViewHolder(val binding: ViewNominationListItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -39,6 +43,7 @@ class NominationsRecyclerViewAdapter :
         }
     }
 
+    //FIXME :: unit test validation on this one
     private suspend fun findNomineeName(nomineeId: String): Nominee? {
         return AppModule.provideRepository(AppModule.provideApi())
             .getAllNominees()
