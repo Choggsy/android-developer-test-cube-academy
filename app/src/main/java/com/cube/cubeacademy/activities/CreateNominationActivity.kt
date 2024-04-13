@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.cube.cubeacademy.R
@@ -20,6 +22,7 @@ import javax.inject.Inject
 class CreateNominationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateNominationBinding
     private lateinit var backButton: Button
+    private lateinit var radioButton: RadioButton
     private lateinit var spinner: Spinner
 
     @Inject
@@ -42,6 +45,13 @@ class CreateNominationActivity : AppCompatActivity() {
         }
     }
 
+    private fun radioButtonListener() {
+        binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            //setSomething to indicate submit button can be pressed
+            radioButton = findViewById(checkedId)
+        }
+    }
+
     private fun populateUI() {
         /**
          * TODO: Populate the form after having added the views to the xml file (Look for TODO comments in the xml file)
@@ -57,7 +67,10 @@ class CreateNominationActivity : AppCompatActivity() {
 //        would add custom xml for the dropdown background if I have time to match the FIGMA : https://www.youtube.com/watch?v=N8GfosWTt44
         val nameList = mutableListOf<String>()
         runBlocking {
-            nameList.add(0,"Select Option") //would have like this to be something set in the .xml but research pointed towards this being the common implementation
+            nameList.add(
+                0,
+                "Select Option"
+            ) //would have like this to be something set in the .xml but research pointed towards this being the common implementation
             repository.getAllNominees()
                 .forEach { nominee: Nominee ->
                     nameList.add(
@@ -73,7 +86,15 @@ class CreateNominationActivity : AppCompatActivity() {
 
         //Spinner Pattern
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) { parent.getItemAtPosition(position).toString()} //did originally use Toast here but removed since it doesn't match the FIGMA
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                parent.getItemAtPosition(position).toString()
+            } //did originally use Toast here but removed since it doesn't match the FIGMA
+
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }

@@ -146,10 +146,10 @@
                     android:paddingBottom="25dp"
                     android:textColor="@color/black" />
 
-                <!-- TODO: Add the Radio button for the feedback -->
-
-
+<!--                Radio button for the feedback-->
+<!--                note: would improve this by making a custom view-->
                 <RadioGroup
+                    android:id="@+id/radio_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
