@@ -62,15 +62,15 @@
                     android:text="@string/id_like_to_nominate_subtitle"
                     android:textColor="@color/black" />
 
-            <!--drop down selector of nominees-->
-            <TextView
-                style="@style/bold_headline_smallest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@string/cubes_name"
-                android:textColor="@color/black"
-                android:paddingTop="25dp"/>
+                <!--drop down selector of nominees-->
+                <TextView
+                    style="@style/bold_headline_smallest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:paddingTop="25dp"
+                    android:text="@string/cubes_name"
+                    android:textColor="@color/black" />
 
                 <Spinner
                     android:id="@+id/nominee_name_spinner"
@@ -104,6 +104,22 @@
                     android:textColor="@color/black" />
 
                 <!-- TODO: Add the Edit text for the reason -->
+
+                <TextView
+                    style="@style/bold_headline_smallest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:paddingTop="25dp"
+                    android:text="@string/reason_box_title"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/message"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:backgroundTint="@color/black"
+                    android:inputType="textCapSentences|textAutoCorrect" />
 
                 <View
                     android:layout_width="match_parent"
