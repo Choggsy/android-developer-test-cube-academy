@@ -51,9 +51,6 @@ class CreateNominationActivity : AppCompatActivity() {
     }
 
     private fun populateDropdown() {
-//        runBlocking { repository.api.getAllNominees()}
-
-
         val testList = listOf("john","pete","steve")
 
         spinner = findViewById(R.id.nominee_name_spinner)
@@ -65,7 +62,7 @@ class CreateNominationActivity : AppCompatActivity() {
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedName = parent.getItemAtPosition(position).toString()
-                // potentially remove toast as this doesnt match the figma designs
+                // potentially remove toast as this doesn't match the figma designs
                 Toast.makeText(this@CreateNominationActivity, " You have selected $selectedName", Toast.LENGTH_SHORT).show()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {
