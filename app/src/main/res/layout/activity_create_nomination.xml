@@ -117,11 +117,11 @@
                     android:id="@+id/message"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
+                    android:autofillHints="@string/reference"
                     android:backgroundTint="@color/black"
-                    android:hint= "@string/character_max"
-                    android:maxLength="200"
+                    android:hint="@string/character_max"
                     android:inputType="textCapSentences|textAutoCorrect"
-                    android:autofillHints="@string/reference" />
+                    android:maxLength="200" />
 
                 <View
                     android:layout_width="match_parent"
@@ -143,48 +143,67 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/process_subtitle"
+                    android:paddingBottom="25dp"
                     android:textColor="@color/black" />
 
                 <!-- TODO: Add the Radio button for the feedback -->
+
+
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <RadioButton
-                        android:id="@+id/radio_very_unfair"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layoutDirection="rtl"
-                        android:text="@string/very_unfair"/>
-
-                    <RadioButton
                         android:id="@+id/radio_unfair"
+                        android:drawableLeft="@drawable/very_unfair"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:layoutDirection="rtl"
-                        android:text="@string/unfair" />
-
-                    <RadioButton
-                        android:id="@+id/radio_unsure"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layoutDirection="rtl"
-                        android:text="@string/unsure" />
-
-                    <RadioButton
-                        android:id="@+id/radio_fair"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layoutDirection="rtl"
-                        android:text="@string/fair" />
+                        android:text="@string/unfair"
+                        tools:ignore="RtlHardcoded" />
 
                     <RadioButton
                         android:id="@+id/radio_very_fair"
+                        android:drawableLeft="@drawable/unfair"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:layoutDirection="rtl"
-                        android:text="@string/very_fair" />
+                        android:text="@string/very_fair"
+                        tools:ignore="RtlHardcoded" />
+
+                    <RadioButton
+                        android:id="@+id/radio_fair"
+                        android:drawableLeft="@drawable/unsure"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layoutDirection="rtl"
+                        android:text="@string/fair"
+                        tools:ignore="RtlHardcoded" />
+
+                    <RadioButton
+                        android:id="@+id/radio_very_unfair"
+                        android:drawableLeft="@drawable/fair"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layoutDirection="rtl"
+                        android:text="@string/very_unfair"
+                        tools:ignore="RtlHardcoded" />
+
+                    <RadioButton
+                        android:id="@+id/radio_unsure"
+                        android:drawableLeft="@drawable/very_fair"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layoutDirection="rtl"
+                        android:text="@string/unsure"
+                        tools:ignore="RtlHardcoded" />
+
                 </RadioGroup>
             </LinearLayout>
 
