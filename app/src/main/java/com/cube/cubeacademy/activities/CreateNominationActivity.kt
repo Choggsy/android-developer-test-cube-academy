@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.cube.cubeacademy.R
 import com.cube.cubeacademy.databinding.ActivityCreateNominationBinding
 import com.cube.cubeacademy.lib.di.Repository
+import com.cube.cubeacademy.lib.models.Nominee
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -51,20 +53,36 @@ class CreateNominationActivity : AppCompatActivity() {
     }
 
     private fun populateDropdown() {
-        val testList = listOf("john","pete","steve")
+        val nameList = mutableListOf<String>()
+        runBlocking {
+            repository.getAllNominees()
+                .forEach { nominee: Nominee -> nameList.add(nominee.firstName.plus(" ").plus(nominee.lastName)) }
+        }
+
+//        val testList = listOf("john","pete","steve")
 
         spinner = findViewById(R.id.nominee_name_spinner)
-        val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, testList)
+        val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, nameList)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
         spinner.adapter = arrayAdapter
 
         //Spinner Pattern
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 val selectedName = parent.getItemAtPosition(position).toString()
                 // potentially remove toast as this doesn't match the figma designs
-                Toast.makeText(this@CreateNominationActivity, " You have selected $selectedName", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@CreateNominationActivity,
+                    " You have selected $selectedName",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
+
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
