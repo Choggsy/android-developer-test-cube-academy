@@ -103,8 +103,7 @@
                     android:text="@string/reason_subtitle"
                     android:textColor="@color/black" />
 
-                <!-- TODO: Add the Edit text for the reason -->
-
+                <!--Edit text for the reason-->
                 <TextView
                     style="@style/bold_headline_smallest"
                     android:layout_width="wrap_content"
@@ -119,7 +118,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:backgroundTint="@color/black"
-                    android:inputType="textCapSentences|textAutoCorrect" />
+                    android:hint= "@string/character_max"
+                    android:maxLength="200"
+                    android:inputType="textCapSentences|textAutoCorrect"
+                    android:autofillHints="@string/reference" />
 
                 <View
                     android:layout_width="match_parent"
