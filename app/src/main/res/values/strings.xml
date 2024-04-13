@@ -13,6 +13,11 @@
 	<string name="reason_box_title">Reasoning</string>
 	<string name="character_max">Max Characters: 200</string>
 	<string name="reference">reference</string>
+	<string name="very_unfair">Very Unfair</string>
+	<string name="unfair">Unfair</string>
+	<string name="unsure">Unsure</string>
+	<string name="fair">Fair</string>
+	<string name="very_fair">Very Fair</string>
 	<string name="reason_subtitle">Please let us know why you think this cube deserves the ‘cube of the month’ title 🏆⭐</string>
 	<string name="process_title">IS HOW WE CURRENTLY RUN CUBE OF THE MONTH FAIR?</string>
 	<string name="process_subtitle">As you know, out the nominees chosen, we spin a wheel to pick the cube of the month. What’s your opinion on this method?</string>

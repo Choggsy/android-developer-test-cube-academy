@@ -146,6 +146,46 @@
                     android:textColor="@color/black" />
 
                 <!-- TODO: Add the Radio button for the feedback -->
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/radio_very_unfair"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layoutDirection="rtl"
+                        android:text="@string/very_unfair" />
+
+                    <RadioButton
+                        android:id="@+id/radio_unfair"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layoutDirection="rtl"
+                        android:text="@string/unfair" />
+
+                    <RadioButton
+                        android:id="@+id/radio_unsure"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layoutDirection="rtl"
+                        android:text="@string/unsure" />
+
+                    <RadioButton
+                        android:id="@+id/radio_fair"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layoutDirection="rtl"
+                        android:text="@string/fair" />
+
+                    <RadioButton
+                        android:id="@+id/radio_very_fair"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layoutDirection="rtl"
+                        android:text="@string/very_fair" />
+                </RadioGroup>
             </LinearLayout>
 
         </LinearLayout>
