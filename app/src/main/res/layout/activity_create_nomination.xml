@@ -80,7 +80,6 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/pink"
                     android:backgroundTintMode="src_in"
-                    android:contentDescription="@string/spinner_title"
                     android:dropDownWidth="wrap_content"
                     android:spinnerMode="dropdown" />
 
