@@ -33,6 +33,7 @@ class RepositoryTest {
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
 
+    //Dependency injection
     @Inject
     lateinit var repository: Repository
 
