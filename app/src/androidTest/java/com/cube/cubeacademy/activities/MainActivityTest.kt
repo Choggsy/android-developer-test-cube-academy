@@ -8,7 +8,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 
-//TODO : come back and have another go implementing Espresso UI tests
+//FIXME : come back and have another go implementing Espresso UI tests
 @HiltAndroidTest
 class MainActivityTest {
     //  note : This is my First time using Espresso API but from my research I can see its a nice framework to test the UI of the Android App. I imagine they should be wired similar to a Java integration test

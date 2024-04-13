@@ -69,7 +69,7 @@ class RepositoryTest {
 
     @Test
     fun createNominationTest() = runBlocking {
-        // TODO: Come back and implement correct Nomination Date
+        // FIXME: Come back and implement correct Nomination Date
         val result = Repository(MockApiService()).createNomination(ID1, REASON, PROCESS)
         val nominationCreateDate = LocalDate.now()
         val expected = Nomination(
