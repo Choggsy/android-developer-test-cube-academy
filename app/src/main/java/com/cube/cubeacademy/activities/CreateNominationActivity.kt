@@ -53,7 +53,8 @@ class CreateNominationActivity : AppCompatActivity() {
 
 
     private fun populateDropdownWithNames() {
-        //FIXME :: extract most of this logic into own handler to unit Test
+        //FIXME :: extract most of this logic into own handler to unit Test.
+//        would add custom xml for the dropdown background if I have time to match the FIGMA : https://www.youtube.com/watch?v=N8GfosWTt44
         val nameList = mutableListOf<String>()
         runBlocking {
             nameList.add(0,"Select Option") //would have like this to be something set in the .xml but research pointed towards this being the common implementation
