@@ -156,7 +156,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layoutDirection="rtl"
-                        android:text="@string/very_unfair" />
+                        android:text="@string/very_unfair"/>
 
                     <RadioButton
                         android:id="@+id/radio_unfair"
