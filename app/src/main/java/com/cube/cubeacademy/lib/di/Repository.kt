@@ -20,7 +20,7 @@ class Repository(val api: ApiService) {
         return api.getAllNominees().data;
     }
 
-    suspend fun createNomination(nomineeId: String, reason: String, process: String): Nomination? {
+    suspend fun createNomination(nomineeId: String, reason: String, process: String): Nomination {
         val createDate = LocalDate.now(); //done this way to increment based of last in api list of nominations.
         return Nomination(
             "", //FIXME :: Get the nominationID from the user logged in as they are the ones Nominating the Nominee
