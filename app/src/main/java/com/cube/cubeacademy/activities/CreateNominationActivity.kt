@@ -56,7 +56,7 @@ class CreateNominationActivity : AppCompatActivity() {
         //FIXME :: extract most of this logic into own handler to unit Test
         val nameList = mutableListOf<String>()
         runBlocking {
-            nameList.add(0,"Select Option")
+            nameList.add(0,"Select Option") //would have like this to be something set in the .xml but research pointed towards this being the common implementation
             repository.getAllNominees()
                 .forEach { nominee: Nominee ->
                     nameList.add(
