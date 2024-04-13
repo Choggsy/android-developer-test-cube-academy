@@ -2,27 +2,24 @@ package com.cube.cubeacademy.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cube.cubeacademy.R
 import com.cube.cubeacademy.databinding.ActivityCreateNominationBinding
-import com.cube.cubeacademy.databinding.ViewNominationListItemBinding
-import com.cube.cubeacademy.lib.adapters.NominationsRecyclerViewAdapter
-import com.cube.cubeacademy.lib.di.AppModule
 import com.cube.cubeacademy.lib.di.Repository
-import com.cube.cubeacademy.lib.models.Nomination
-import com.cube.cubeacademy.lib.models.Nominee
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
-import kotlin.collections.EmptyMap.forEach
 
 @AndroidEntryPoint
 class CreateNominationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateNominationBinding
     private lateinit var backButton: Button
+    private lateinit var spinner: Spinner
 
     @Inject
     lateinit var repository: Repository
@@ -50,14 +47,29 @@ class CreateNominationActivity : AppCompatActivity() {
          * 		 Add the logic for the views and at the end, add the logic to create the new nomination using the api
          * 		 The nominees drop down list items should come from the api (By fetching the nominee list)
          */
-        //Spinner Element
-        //TODO:: get all the names of the nominees repository.getAllNominees() but need strings and just the Names
-        val spinner: Spinner = findViewById(R.id.nominations_list)
-        val allNominees = runBlocking { repository.getAllNominees() }
-        ArrayAdapter<Nominee>(
-            this,
-            android.R.layout.simple_spinner_item,
-            allNominees
-        )
+        populateDropdown()
+    }
+
+    private fun populateDropdown() {
+//        runBlocking { repository.api.getAllNominees()}
+
+
+        val testList = listOf("john","pete","steve")
+
+        spinner = findViewById(R.id.nominee_name_spinner)
+        val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, testList)
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+        spinner.adapter = arrayAdapter
+
+        //Spinner Pattern
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val selectedName = parent.getItemAtPosition(position).toString()
+                // potentially remove toast as this doesnt match the figma designs
+                Toast.makeText(this@CreateNominationActivity, " You have selected $selectedName", Toast.LENGTH_SHORT).show()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+        }
     }
 }
