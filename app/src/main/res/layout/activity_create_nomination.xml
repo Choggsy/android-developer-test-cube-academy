@@ -74,13 +74,15 @@
                 android:textColor="@color/black"
                 android:paddingTop="25dp"/>
 
-            <Spinner
-                android:id="@+id/nominee_name_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:dropDownWidth="wrap_content"
-                android:dropDownSelector="@color/pink"
-                android:spinnerMode="dropdown" />
+                <Spinner
+                    android:id="@+id/nominee_name_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/pink"
+                    android:backgroundTintMode="src_in"
+                    android:contentDescription="@string/spinner_title"
+                    android:dropDownWidth="wrap_content"
+                    android:spinnerMode="dropdown" />
 
                 <View
                     android:layout_width="match_parent"
