@@ -13,7 +13,8 @@ class DropDownNameHandler(val repository: Repository) {
 
     fun populateDropdownWithNames(binding: ActivityCreateNominationBinding, context: Context, ) {
         val nameList = repository.getNomineeNameList()
-        val arrayAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, nameList)
+        nameList.add(0, "Select Option")
+        val arrayAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, nameList.toList()) //added toList so its immutable from this point on
 
         spinner = binding.root.findViewById(R.id.nominee_name_spinner)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item)

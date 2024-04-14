@@ -21,14 +21,13 @@ class Repository(val api: ApiService) {
         return api.getAllNominees().data;
     }
 
-    fun getNomineeNameList(): List<String> {
+    fun getNomineeNameList(): MutableList<String> {
         val nameList = mutableListOf<String>()
         runBlocking {
-            nameList.add(0, "Select Option")
             this@Repository.getAllNominees()
                 .forEach { nominee: Nominee -> nameList.add(nominee.firstName.plus(" ").plus(nominee.lastName)) } }
-        return nameList.toList() //to make immutable after transformation
-    } //extracted out of the dropdown spinner cause it could be reused. (Would have to start list from indent 1)
+        return nameList
+    } //extracted out of the dropdown spinner cause it could be reused.
 
     fun createNomination(nomineeId: String, reason: String, process: String): Nomination {
         val createDate = LocalDate.now(); //done this way to increment based of last in api list of nominations.

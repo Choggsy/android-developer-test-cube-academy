@@ -67,18 +67,6 @@ class RepositoryTest {
     }
 
     @Test
-    fun getNomineeNameListTest() {
-        val result = Repository(MockApiService()).getNomineeNameList()
-        val expected = listOf(
-            "Select Option",
-            "FirstTest1 LastTest1",
-            "FirstTest2 LastTest2",
-            "FirstTest3 LastTest3",
-        )
-        assertEquals(expected, result);
-    }
-
-    @Test
     fun createNominationTest() = runBlocking {
         // FIXME: Come back and implement correct Nomination Date
         val result = Repository(MockApiService()).createNomination(ID1, REASON, PROCESS)
@@ -94,6 +82,16 @@ class RepositoryTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    fun getNomineeNameSpinnerListTest() {
+        val result = Repository(MockApiService()).getNomineeNameList()
+        val expected = listOf(
+            "FirstTest1 LastTest1",
+            "FirstTest2 LastTest2",
+            "FirstTest3 LastTest3",
+        )
+        assertEquals(expected, result);
+    }
     // would like to add Parametrized nominationClosesWithinCreatedMonth if I have the time
 //    also use the assertK (Kotlins AssertJ) for more BDD style assertions for readability and more assertion control
 
