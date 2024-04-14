@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -143,12 +142,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@string/process_subtitle"
                     android:paddingBottom="25dp"
+                    android:text="@string/process_subtitle"
                     android:textColor="@color/black" />
 
-<!--                Radio button for the feedback-->
-<!--                note: would improve this by making a custom view-->
+                <!--  Radio button for the feedback-->
                 <RadioGroup
                     android:id="@+id/radio_group"
                     android:layout_width="match_parent"
@@ -157,54 +155,54 @@
 
                     <RadioButton
                         android:id="@+id/radio_unfair"
-                        android:drawableLeft="@drawable/very_unfair"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:drawableLeft="@drawable/very_unfair"
                         android:layoutDirection="rtl"
                         android:text="@string/unfair"
                         tools:ignore="RtlHardcoded" />
 
-                    <RadioButton
-                        android:id="@+id/radio_very_fair"
-                        android:drawableLeft="@drawable/unfair"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:layoutDirection="rtl"
-                        android:text="@string/very_fair"
-                        tools:ignore="RtlHardcoded" />
-
-                    <RadioButton
-                        android:id="@+id/radio_fair"
-                        android:drawableLeft="@drawable/unsure"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:layoutDirection="rtl"
-                        android:text="@string/fair"
-                        tools:ignore="RtlHardcoded" />
 
                     <RadioButton
                         android:id="@+id/radio_very_unfair"
-                        android:drawableLeft="@drawable/fair"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:drawableLeft="@drawable/fair"
                         android:layoutDirection="rtl"
                         android:text="@string/very_unfair"
                         tools:ignore="RtlHardcoded" />
 
                     <RadioButton
                         android:id="@+id/radio_unsure"
-                        android:drawableLeft="@drawable/very_fair"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:drawableLeft="@drawable/very_fair"
                         android:layoutDirection="rtl"
                         android:text="@string/unsure"
                         tools:ignore="RtlHardcoded" />
 
+                    <RadioButton
+                        android:id="@+id/radio_fair"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/unsure"
+                        android:layoutDirection="rtl"
+                        android:text="@string/fair"
+                        tools:ignore="RtlHardcoded" />
+
+                    <RadioButton
+                        android:id="@+id/radio_very_fair"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/unfair"
+                        android:layoutDirection="rtl"
+                        android:text="@string/very_fair"
+                        tools:ignore="RtlHardcoded" />
                 </RadioGroup>
             </LinearLayout>
 
