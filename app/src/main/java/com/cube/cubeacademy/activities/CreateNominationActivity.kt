@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class CreateNominationActivity : AppCompatActivity() {
-    private lateinit var activityBinding: ActivityCreateNominationBinding
+    private lateinit var binding: ActivityCreateNominationBinding
     private lateinit var backButton: Button
     private lateinit var radioButton: RadioButton
     private var isReasonEntered = false
@@ -31,9 +31,9 @@ class CreateNominationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityBinding = ActivityCreateNominationBinding.inflate(layoutInflater)
-        setContentView(activityBinding.root)
-        DropDownNameHandler(repository).populateDropdownWithNames(activityBinding, this)
+        binding = ActivityCreateNominationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        DropDownNameHandler(repository).populateDropdownWithNames(binding, this)
         backButtonListener()
         submitButtonListener()
 
@@ -42,32 +42,23 @@ class CreateNominationActivity : AppCompatActivity() {
         dropDownListener()
     }
 
-    /**
-     * TODO:
-     * - Add the logic for the views / maybe done
-     * - add the logic to create the new nomination using the api
-     *  android:enabled="false" -> true WHEN  all submitEnable -> true THEN startActivity4
-     *
-     *  onClick for submit THen set value for createNomination(could be private with status fed in)
-     */
-
     private fun isFormComplete() {
-        val submitButton = activityBinding.submitButton
+        val submitButton = binding.submitButton
         submitButton.isEnabled = isReasonEntered && isRadioEntered && isNomineeEntered
     }
 
     private fun submitButtonListener() {
-        val submitButton = activityBinding.submitButton
+        val submitButton = binding.submitButton
         submitButton.setOnClickListener {
             if (isReasonEntered && isRadioEntered && isNomineeEntered) {
-                NewNomination(repository, activityBinding).create(radioButton.getText().toString())
+                NewNomination(repository, binding).create(radioButton.getText().toString())
                 startActivity(Intent(this, NominationSubmittedActivity::class.java))
             }
         }
     }
 
     private fun dropDownListener() {
-        activityBinding.nomineeNameSpinner.onItemSelectedListener =
+        binding.nomineeNameSpinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
@@ -76,7 +67,7 @@ class CreateNominationActivity : AppCompatActivity() {
                     id: Long
                 ) {
                     val dropDownValue =
-                        activityBinding.nomineeNameSpinner.getSelectedItem().toString()
+                        binding.nomineeNameSpinner.getSelectedItem().toString()
                     isNomineeEntered =
                         dropDownValue.isNotBlank() && dropDownValue != "Select Option"
                     isFormComplete()
@@ -87,7 +78,7 @@ class CreateNominationActivity : AppCompatActivity() {
     }
 
     private fun reasonTextListener() {
-        activityBinding.message.addTextChangedListener(object : TextWatcher {
+        binding.message.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(arg0: Editable) {
                 isReasonEntered = arg0.isNotBlank()
                 isFormComplete()
@@ -99,7 +90,7 @@ class CreateNominationActivity : AppCompatActivity() {
     }
 
     private fun backButtonListener() {
-        backButton = activityBinding.backButton
+        backButton = binding.backButton
         backButton.setOnClickListener {
             if (isReasonEntered || isRadioEntered || isNomineeEntered) {
                 val modal = LeaveNomination()
@@ -111,7 +102,7 @@ class CreateNominationActivity : AppCompatActivity() {
     }
 
     private fun radioButtonListener() {
-        activityBinding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
+        binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
             radioButton = findViewById(checkedId)
             isRadioEntered = radioButton.isChecked
             isFormComplete()

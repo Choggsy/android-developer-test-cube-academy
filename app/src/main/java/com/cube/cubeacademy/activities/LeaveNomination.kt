@@ -1,6 +1,7 @@
 package com.cube.cubeacademy.activities
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,8 @@ class LeaveNomination : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = ViewLeaveNominationBinding.inflate(inflater,container,false)
+        binding.cancelButton.setOnClickListener { dialog?.dismiss() }
+        binding.leaveButton.setOnClickListener { startActivity(Intent(this.requireActivity(), MainActivity::class.java)) }
         return binding.root
     }
 
