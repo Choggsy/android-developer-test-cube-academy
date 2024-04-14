@@ -23,5 +23,9 @@
 	<string name="process_subtitle">As you know, out the nominees chosen, we spin a wheel to pick the cube of the month. What’s your opinion on this method?</string>
 	<string name="nomination_submitted">Nomination Submitted</string>
 	<string name="back_to_home">Back to home</string>
+	<string name="are_you_sure">ARE YOU SURE?</string>
+	<string name="leave_textbox">If you leave this page, you will loose any progress made.</string>
+	<string name="leave_page">YES, LEAVE PAGE</string>
+	<string name="cancel">CANCEL</string>
 	<string name="nomination_submitted_body">Thank you for taking the time to fill out this form! Why not nominate another cube?</string>
 </resources>
