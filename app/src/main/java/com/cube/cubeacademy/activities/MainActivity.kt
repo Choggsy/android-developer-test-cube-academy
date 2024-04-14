@@ -47,8 +47,9 @@ class MainActivity : AppCompatActivity() {
          */
 
         //note: used runBlocking for the async call as an alternative to using Suspend throughout the hierarchy.
-        if(binding.nominationsList.isNotEmpty()){
+        if (binding.nominationsList.isNotEmpty()) {
             //make fragement for using the nomination list. --> similar to LeaveNomination Set up but not modal
 //            SubmittedNominations() -> all the nomimation the user made
         }
     }
+}
