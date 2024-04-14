@@ -23,6 +23,7 @@ class MockApiService : ApiService {
 				Nominee("1", "FirstTest1", "LastTest1"),
 				Nominee("2", "FirstTest2", "LastTest2"),
 				Nominee("3", "FirstTest3", "LastTest3"),
+				Nominee("4", "FirstTest4", "Last Test 4"),
 			)
 		)
 	}

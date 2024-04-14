@@ -20,6 +20,8 @@ private const val ID2 = "2"
 
 private const val ID3 = "3"
 
+private const val ID4 = "4"
+
 private const val REASON = "reason"
 
 private const val PROCESS = "process"
@@ -49,7 +51,7 @@ class RepositoryTest {
             Nomination(ID1, ID1, REASON, PROCESS, DATE_SUBMITTED, DATE_CLOSED),
             Nomination(ID2, ID2, REASON, PROCESS, DATE_SUBMITTED, DATE_CLOSED),
             Nomination(ID1, ID3, REASON, PROCESS, DATE_SUBMITTED, DATE_CLOSED),
-            Nomination(ID2, "4", REASON, PROCESS, DATE_SUBMITTED, DATE_CLOSED),
+            Nomination(ID2, ID4, REASON, PROCESS, DATE_SUBMITTED, DATE_CLOSED),
         )
 
         assertEquals(expected, result);
@@ -62,13 +64,13 @@ class RepositoryTest {
             Nominee(ID1, "FirstTest1", "LastTest1"),
             Nominee(ID2, "FirstTest2", "LastTest2"),
             Nominee(ID3, "FirstTest3", "LastTest3"),
+            Nominee(ID4, "FirstTest4", "Last Test 4")
         )
         assertEquals(expected, result);
     }
 
     @Test
     fun createNominationTest() = runBlocking {
-        // FIXME: Come back and implement correct Nomination Date
         val result = Repository(MockApiService()).createNomination(ID1, REASON, PROCESS)
         val nominationCreateDate = LocalDate.now()
         val expected = Nomination(
@@ -94,6 +96,7 @@ class RepositoryTest {
             "FirstTest1 LastTest1",
             "FirstTest2 LastTest2",
             "FirstTest3 LastTest3",
+            "FirstTest4 Last Test 4"
         )
         assertEquals(expected, result);
     }

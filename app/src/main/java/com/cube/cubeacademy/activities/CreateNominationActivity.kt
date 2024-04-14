@@ -11,6 +11,7 @@ import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import com.cube.cubeacademy.databinding.ActivityCreateNominationBinding
 import com.cube.cubeacademy.lib.di.DropDownNameHandler
+import com.cube.cubeacademy.lib.di.NewNomination
 import com.cube.cubeacademy.lib.di.Repository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -21,7 +22,6 @@ class CreateNominationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateNominationBinding
     private lateinit var backButton: Button
     private lateinit var radioButton: RadioButton
-
     private var isReasonEntered = false
     private var isRadioEntered = false
     private var isNomineeEntered = false
@@ -35,6 +35,7 @@ class CreateNominationActivity : AppCompatActivity() {
         setContentView(binding.root)
         DropDownNameHandler(repository).populateDropdownWithNames(binding, this)
         backButtonListener()
+        submitButtonListener()
 
         radioButtonListener()
         reasonTextListener()
@@ -55,6 +56,16 @@ class CreateNominationActivity : AppCompatActivity() {
         submitButton.isEnabled = isReasonEntered && isRadioEntered && isNomineeEntered
     }
 
+    private fun submitButtonListener() {
+        val submitButton = binding.submitButton
+        submitButton.setOnClickListener {
+            if (isReasonEntered && isRadioEntered && isNomineeEntered) {
+                NewNomination(repository,binding).create(radioButton.getText().toString())
+                startActivity(Intent(this, NominationSubmittedActivity::class.java))
+            }
+        }
+    }
+
     private fun dropDownListener() {
         binding.nomineeNameSpinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
@@ -63,6 +74,7 @@ class CreateNominationActivity : AppCompatActivity() {
                     isNomineeEntered = dropDownValue.isNotBlank() && dropDownValue != "Select Option"
                     isFormComplete()
                 }
+
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
     }
@@ -73,6 +85,7 @@ class CreateNominationActivity : AppCompatActivity() {
                 isReasonEntered = arg0.isNotBlank()
                 isFormComplete()
             }
+
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         })
