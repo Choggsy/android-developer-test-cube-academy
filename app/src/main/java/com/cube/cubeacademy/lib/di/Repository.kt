@@ -3,6 +3,7 @@ package com.cube.cubeacademy.lib.di
 import com.cube.cubeacademy.lib.api.ApiService
 import com.cube.cubeacademy.lib.models.Nomination
 import com.cube.cubeacademy.lib.models.Nominee
+import kotlinx.coroutines.runBlocking
 import java.time.LocalDate
 import java.util.stream.IntStream
 
@@ -20,7 +21,16 @@ class Repository(val api: ApiService) {
         return api.getAllNominees().data;
     }
 
-    suspend fun createNomination(nomineeId: String, reason: String, process: String): Nomination {
+    fun getNomineeNameList(): List<String> {
+        val nameList = mutableListOf<String>()
+        runBlocking {
+            nameList.add(0, "Select Option")
+            this@Repository.getAllNominees()
+                .forEach { nominee: Nominee -> nameList.add(nominee.firstName.plus(" ").plus(nominee.lastName)) } }
+        return nameList.toList() //to make immutable after transformation
+    } //extracted out of the dropdown spinner cause it could be reused. (Would have to start list from indent 1)
+
+    fun createNomination(nomineeId: String, reason: String, process: String): Nomination {
         val createDate = LocalDate.now(); //done this way to increment based of last in api list of nominations.
         return Nomination(
             "", //FIXME :: Get the nominationID from the user logged in as they are the ones Nominating the Nominee
@@ -31,6 +41,6 @@ class Repository(val api: ApiService) {
             createDate.plusMonths(1).withDayOfMonth(1).toString()
         )
         // I Chose to set the close date to the first of the month after of the date nomination created. As these are monthly employee nominations, so would close by the start of the next month.
-        // I set that are a variable in case microsecond discrepancy causes issue
+        // I set that are a variable in case microsecond discrepancy causes issue as it does for LocalDateTime
     }
 }

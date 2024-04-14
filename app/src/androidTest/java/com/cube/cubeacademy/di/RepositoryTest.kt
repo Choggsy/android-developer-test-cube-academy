@@ -33,7 +33,7 @@ class RepositoryTest {
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
 
-    //Dependency injection
+    //Dependency injection on the class we're testing
     @Inject
     lateinit var repository: Repository
 
@@ -63,7 +63,18 @@ class RepositoryTest {
             Nominee(ID2, "FirstTest2", "LastTest2"),
             Nominee(ID3, "FirstTest3", "LastTest3"),
         )
+        assertEquals(expected, result);
+    }
 
+    @Test
+    fun getNomineeNameListTest() {
+        val result = Repository(MockApiService()).getNomineeNameList()
+        val expected = listOf(
+            "Select Option",
+            "FirstTest1 LastTest1",
+            "FirstTest2 LastTest2",
+            "FirstTest3 LastTest3",
+        )
         assertEquals(expected, result);
     }
 
@@ -78,7 +89,8 @@ class RepositoryTest {
             REASON,
             PROCESS,
             nominationCreateDate.toString(),
-            nominationCreateDate.plusMonths(1).withDayOfMonth(1).toString());
+            nominationCreateDate.plusMonths(1).withDayOfMonth(1).toString()
+        );
         assertEquals(expected, result);
     }
 
