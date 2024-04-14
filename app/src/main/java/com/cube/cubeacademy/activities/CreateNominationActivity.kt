@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +24,7 @@ class CreateNominationActivity : AppCompatActivity() {
 
     private var isReasonEntered = false
     private var isRadioEntered = false
-//    private var isNomineeEntered = false
+    private var isNomineeEntered = false
 
     @Inject
     lateinit var repository: Repository
@@ -36,7 +38,7 @@ class CreateNominationActivity : AppCompatActivity() {
 
         radioButtonListener()
         reasonTextListener()
-
+        dropDownListener()
     }
 
     /**
@@ -50,8 +52,19 @@ class CreateNominationActivity : AppCompatActivity() {
 
     private fun isFormComplete() {
         val submitButton = binding.submitButton
-        submitButton.isEnabled = isReasonEntered && isRadioEntered
-//        submitButton.isEnabled = isReasonEntered && isRadioEntered && isNomineeEntered
+        submitButton.isEnabled = isReasonEntered && isRadioEntered && isNomineeEntered
+    }
+
+    private fun dropDownListener() {
+        binding.nomineeNameSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    val dropDownValue = binding.nomineeNameSpinner.getSelectedItem().toString()
+                    isNomineeEntered = dropDownValue.isNotBlank() && dropDownValue != "Select Option"
+                    isFormComplete()
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
     }
 
     private fun reasonTextListener() {
@@ -60,7 +73,6 @@ class CreateNominationActivity : AppCompatActivity() {
                 isReasonEntered = arg0.isNotBlank()
                 isFormComplete()
             }
-
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         })
