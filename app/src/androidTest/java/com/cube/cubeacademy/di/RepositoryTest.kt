@@ -83,6 +83,11 @@ class RepositoryTest {
     }
 
     @Test
+    fun nominationIdCantMatchNomineeId() {
+//        FIXME(" Validate that a user can not make nominations for themselves. NomId != NomineeId")
+    }
+
+    @Test
     fun getNomineeNameSpinnerListTest() {
         val result = Repository(MockApiService()).getNomineeNameList()
         val expected = listOf(
@@ -94,6 +99,4 @@ class RepositoryTest {
     }
     // would like to add Parametrized nominationClosesWithinCreatedMonth if I have the time
 //    also use the assertK (Kotlins AssertJ) for more BDD style assertions for readability and more assertion control
-
-//    Validate that a user can not make nominations for themselves. NomId != NomineeId
 }

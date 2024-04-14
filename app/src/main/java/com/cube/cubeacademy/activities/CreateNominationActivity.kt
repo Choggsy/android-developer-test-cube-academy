@@ -32,9 +32,9 @@ class CreateNominationActivity : AppCompatActivity() {
 
     private fun populateUI() {
         /**
-         * TODO: Populate the form after having added the views to the xml file (Look for TODO comments in the xml file)
-         * 		 Add the logic for the views and at the end, add the logic to create the new nomination using the api
-         * 		 The nominees drop down list items should come from the api (By fetching the nominee list)
+         * TODO:
+         * - Add the logic for the views / maybe done
+         * - add the logic to create the new nomination using the api
          */
         DropDownNameHandler(repository).populateDropdownWithNames(binding,this)
     }
