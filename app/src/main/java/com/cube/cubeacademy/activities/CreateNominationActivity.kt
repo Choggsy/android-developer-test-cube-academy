@@ -21,7 +21,7 @@ class CreateNominationActivity : AppCompatActivity() {
     private lateinit var radioButton: RadioButton
 
     private var isReasonEntered = false
-//    private var isRadioEntered = false
+    private var isRadioEntered = false
 //    private var isNomineeEntered = false
 
     @Inject
@@ -50,7 +50,7 @@ class CreateNominationActivity : AppCompatActivity() {
 
     private fun isFormComplete() {
         val submitButton = binding.submitButton
-        submitButton.isEnabled = isReasonEntered
+        submitButton.isEnabled = isReasonEntered && isRadioEntered
 //        submitButton.isEnabled = isReasonEntered && isRadioEntered && isNomineeEntered
     }
 
@@ -76,6 +76,8 @@ class CreateNominationActivity : AppCompatActivity() {
     private fun radioButtonListener() {
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
             radioButton = findViewById(checkedId)
+            isRadioEntered = radioButton.isChecked
+            isFormComplete()
         }
     }
 }
