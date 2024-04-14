@@ -18,8 +18,11 @@ import javax.inject.Inject
 class CreateNominationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateNominationBinding
     private lateinit var backButton: Button
-    private lateinit var submitButton: Button
     private lateinit var radioButton: RadioButton
+
+    private var isReasonEntered = false
+//    private var isRadioEntered = false
+//    private var isNomineeEntered = false
 
     @Inject
     lateinit var repository: Repository
@@ -34,23 +37,33 @@ class CreateNominationActivity : AppCompatActivity() {
         radioButtonListener()
         reasonTextListener()
 
-        populateUI()
     }
 
-    private fun populateUI() {
-        /**
-         * TODO:
-         * - Add the logic for the views / maybe done
-         * - add the logic to create the new nomination using the api
-         *  android:enabled="false" -> true WHEN  all submitEnable -> true THEN startActivity4
-         *
-         *  onClick for submit THen set value (could be private with status fed in)
-         */
-        submitButton = binding.submitButton
+    /**
+     * TODO:
+     * - Add the logic for the views / maybe done
+     * - add the logic to create the new nomination using the api
+     *  android:enabled="false" -> true WHEN  all submitEnable -> true THEN startActivity4
+     *
+     *  onClick for submit THen set value for createNomination(could be private with status fed in)
+     */
 
-        if (reasonTextListener() == true) {
-            submitButton.isEnabled = true
-        }
+    private fun isFormComplete() {
+        val submitButton = binding.submitButton
+        submitButton.isEnabled = isReasonEntered
+//        submitButton.isEnabled = isReasonEntered && isRadioEntered && isNomineeEntered
+    }
+
+    private fun reasonTextListener() {
+        binding.message.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(arg0: Editable) {
+                isReasonEntered = arg0.isNotBlank()
+                isFormComplete()
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+        })
     }
 
     private fun backButtonListener() {
@@ -64,20 +77,5 @@ class CreateNominationActivity : AppCompatActivity() {
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
             radioButton = findViewById(checkedId)
         }
-    }
-
-    private fun reasonTextListener(): Boolean {
-        var reasonSubmitReady = false
-        binding.message.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(arg0: Editable) {
-                reasonSubmitReady = true
-            }
-
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                reasonSubmitReady = false
-            }
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-        })
-        return reasonSubmitReady
     }
 }
