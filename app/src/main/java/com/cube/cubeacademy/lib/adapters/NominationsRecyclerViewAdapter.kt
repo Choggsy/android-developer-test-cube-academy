@@ -14,9 +14,6 @@ import kotlinx.coroutines.runBlocking
 class NominationsRecyclerViewAdapter :
     ListAdapter<Nomination, NominationsRecyclerViewAdapter.ViewHolder>(DIFF_CALLBACK) {
 
-    //        FIXME:: could use if first solution doesnt work
-    //        @Inject
-//	lateinit var repository: Repository
     class ViewHolder(val binding: ViewNominationListItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -36,7 +33,8 @@ class NominationsRecyclerViewAdapter :
         holder.binding.apply {
             /**
              * TODO: This should show the nominee name instead of their id! Where can you get their name from?
-             * // get on nomineeList
+             * // get on nomineeList // or could use the getFullName from repository
+             * getNomineeNameList
              */
             name.text = firstName
             reason.text = item.reason

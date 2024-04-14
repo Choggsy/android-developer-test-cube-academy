@@ -12,7 +12,6 @@ class NewNomination(val repository: Repository, val binding: ActivityCreateNomin
     }
 
     private fun getNominationID(): String {
-        //just for testing, make private later
         var foundNomineeID = ""
         runBlocking {
             val fullNameList = binding.nomineeNameSpinner.getSelectedItem().toString().split("[^ ]* (.*)".toRegex())

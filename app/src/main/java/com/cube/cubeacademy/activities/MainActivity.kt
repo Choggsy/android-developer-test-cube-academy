@@ -44,13 +44,11 @@ class MainActivity : AppCompatActivity() {
         /**
          * TODO: Populate the UI with data in this function
          * 		 You need to fetch the list of user's nominations from the api and put the data in the recycler view
-         * 		 And also add action to the "Create new nomination" button to go to the CreateNominationActivity
          */
-        //FIXME :: come back after wiring the rest of the site to see if this worked lol
-        //used runBlocking for the async call as an alternative to using Suspend throughout the hierarchy.
-//        val nominationList = runBlocking { repository.getAllNominations() } //could us this in IF
+
+        //note: used runBlocking for the async call as an alternative to using Suspend throughout the hierarchy.
         if(binding.nominationsList.isNotEmpty()){
-            NominationsRecyclerViewAdapter.ViewHolder(ViewNominationListItemBinding.bind(binding.nominationsList))
+            //make fragement for using the nomination list. --> similar to LeaveNomination Set up but not modal
+//            SubmittedNominations() -> all the nomimation the user made
         }
     }
-}
