@@ -2,6 +2,7 @@
 <!--
    Sample data extraction rules file; uncomment and customize as necessary.
    See https://developer.android.com/about/versions/12/backup-restore#xml-changes
+   https://developer.android.com/guide/topics/data/autobackup#xml-syntax-android-12
    for details.
 -->
 <data-extraction-rules>
