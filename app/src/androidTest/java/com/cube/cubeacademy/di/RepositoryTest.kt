@@ -11,7 +11,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import java.time.LocalDate
 import javax.inject.Inject
 
 private const val ID1 = "1"
@@ -24,11 +23,12 @@ private const val ID4 = "4"
 
 private const val REASON = "reason"
 
-private const val PROCESS = "process"
+private const val PROCESS = "very_unfair"
 
 private const val DATE_SUBMITTED = "2023-10-11"
 
 private const val DATE_CLOSED = "2023-11-11"
+
 
 @HiltAndroidTest
 class RepositoryTest {
@@ -69,25 +69,27 @@ class RepositoryTest {
         assertEquals(expected, result);
     }
 
-    //TODO:: come back and fix this
-//    @Test
-//    fun createNominationTest() = runBlocking {
-//        Repository(MockApiService()).createNomination(ID1, REASON, PROCESS)
-//        val result = Repository(MockApiService()).getAllNominations().last()
-//        val expected = Nomination(
-//            ID3,
-//            ID1,
-//            REASON,
-//            PROCESS,
-//            "2023-10-11",
-//            "2023-11-12"
-//        ); //note : add note about the date to bonus
-//        assertEquals(expected, result);
-//    }
-
     @Test
-    fun nominationIdCantMatchNomineeId() {
-//        FIXME(" Validate that a user can not make nominations for themselves. NomId != NomineeId")
+    fun getNomineeByIdTest() = runBlocking {
+        val result = Repository(MockApiService()).getNomineeByID(ID1)
+        val expected = Nominee(ID1, "FirstTest1", "LastTest1")
+        assertEquals(expected, result);
+    }
+
+    //note: would come back and make a parametrized test for all the processes if had more time
+    @Test
+    fun createNominationTest() = runBlocking {
+        Repository(MockApiService()).createNomination(ID4, REASON, PROCESS)
+        val result = Repository(MockApiService()).getAllNominations().last()
+        val expected = Nomination(
+            ID2,
+            ID4,
+            REASON,
+            PROCESS,
+            "2023-10-11",
+            "2023-11-11"
+        )
+        assertEquals(expected, result);
     }
 
     @Test
@@ -101,6 +103,6 @@ class RepositoryTest {
         )
         assertEquals(expected, result);
     }
-    // would like to add Parametrized nominationClosesWithinCreatedMonth if I have the time
-//    also use the assertK (Kotlins AssertJ) for more BDD style assertions for readability and more assertion control
+
+//   note: would improve with assertK (Kotlins AssertJ) for more BDD style assertions for readability and more assertion control
 }
