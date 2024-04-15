@@ -44,6 +44,7 @@ class RepositoryTest {
         hiltRule.inject()
     }
 
+
     @Test
     fun getNominationsTest() = runBlocking {//added to tests on suspend functions
         val result = Repository(MockApiService()).getAllNominations()

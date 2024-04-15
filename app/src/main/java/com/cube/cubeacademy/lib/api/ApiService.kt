@@ -1,6 +1,5 @@
 package com.cube.cubeacademy.lib.api
 
-import android.adservices.adid.AdId
 import com.cube.cubeacademy.lib.models.DataWrapper
 import com.cube.cubeacademy.lib.models.Nomination
 import com.cube.cubeacademy.lib.models.Nominee
@@ -22,11 +21,5 @@ interface ApiService {
 		@Field("nominee_id") nomineeId: String,
 		@Field("reason") reason: String,
 		@Field("process") process: String
-	): DataWrapper<Nomination>
-
-	@FormUrlEncoded
-	@GET("api/nomination:nomination_id")
-	suspend fun getNominationByID(
-		@Field("nomination_id") nominationId: String,
 	): DataWrapper<Nomination>
 }

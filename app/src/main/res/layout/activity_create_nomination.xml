@@ -158,7 +158,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:drawableLeft="@drawable/fair"
+                        android:drawableLeft="@drawable/very_unfair"
                         android:layoutDirection="rtl"
                         android:text="@string/very_unfair"
                         tools:ignore="RtlHardcoded" />
@@ -168,7 +168,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:drawableLeft="@drawable/very_unfair"
+                        android:drawableLeft="@drawable/unfair"
                         android:layoutDirection="rtl"
                         android:text="@string/unfair"
                         tools:ignore="RtlHardcoded" />
@@ -178,7 +178,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:drawableLeft="@drawable/very_fair"
+                        android:drawableLeft="@drawable/unsure"
                         android:layoutDirection="rtl"
                         android:text="@string/unsure"
                         tools:ignore="RtlHardcoded" />
@@ -188,7 +188,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:drawableLeft="@drawable/unsure"
+                        android:drawableLeft="@drawable/fair"
                         android:layoutDirection="rtl"
                         android:text="@string/fair"
                         tools:ignore="RtlHardcoded" />
@@ -198,7 +198,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:drawableLeft="@drawable/unfair"
+                        android:drawableLeft="@drawable/very_fair"
                         android:layoutDirection="rtl"
                         android:text="@string/very_fair"
                         tools:ignore="RtlHardcoded" />

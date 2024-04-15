@@ -22,6 +22,7 @@ class CreateNominationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateNominationBinding
     private lateinit var backButton: Button
     private lateinit var radioButton: RadioButton
+
     private var isReasonEntered = false
     private var isRadioEntered = false
     private var isNomineeEntered = false

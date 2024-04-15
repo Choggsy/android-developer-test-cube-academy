@@ -33,8 +33,4 @@ class MockApiService : ApiService {
 			Nomination("3", nomineeId, reason, process, "2023-10-11", "2023-11-12")
 		)
 	}
-
-	override suspend fun getNominationByID(nominationId: String): DataWrapper<Nomination> {
-		TODO("Not yet implemented")
-	}
 }

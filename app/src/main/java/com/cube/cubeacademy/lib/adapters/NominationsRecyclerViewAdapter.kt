@@ -1,20 +1,12 @@
 package com.cube.cubeacademy.lib.adapters
 
-import android.net.wifi.hotspot2.pps.Credential.UserCredential
-import android.service.autofill.UserData
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.cube.cubeacademy.databinding.ViewNominationListItemBinding
-import com.cube.cubeacademy.lib.di.AppModule
-import com.cube.cubeacademy.lib.di.Repository
 import com.cube.cubeacademy.lib.models.Nomination
-import com.cube.cubeacademy.lib.models.Nominee
-import kotlinx.coroutines.runBlocking
-import javax.inject.Inject
 
 class NominationsRecyclerViewAdapter() : ListAdapter<Nomination, NominationsRecyclerViewAdapter.ViewHolder>(DIFF_CALLBACK) {
 
@@ -33,11 +25,10 @@ class NominationsRecyclerViewAdapter() : ListAdapter<Nomination, NominationsRecy
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
 
+
         holder.binding.apply {
-            /**
-             * TODO: This should show the nominee name instead of their id! Where can you get their name from?
-             * // geNomineeByID from rep // or could use the getFullName from repository
-             */
+            //note: geNomineeByID from repository // or could use the getFullName from repository -->
+            // but online says Adapters can't be injected from hilt and passing it in wasnt clean
             name.text = item.nomineeId
             reason.text = item.reason
         }

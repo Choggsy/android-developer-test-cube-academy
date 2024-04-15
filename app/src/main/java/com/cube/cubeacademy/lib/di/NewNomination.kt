@@ -1,15 +1,16 @@
 package com.cube.cubeacademy.lib.di
 
 import com.cube.cubeacademy.databinding.ActivityCreateNominationBinding
+import com.cube.cubeacademy.lib.models.Nomination
 import com.cube.cubeacademy.lib.models.Nominee
 import kotlinx.coroutines.runBlocking
 
 class NewNomination(val repository: Repository, val binding: ActivityCreateNominationBinding) {
     private lateinit var radioValue: String
 
-    fun create(process: String){
+    fun create(process: String): Nomination{
         val reason = binding.message.text.toString()
-        repository.createNomination(getNominationID(),reason,getRadioValue(process))
+        return repository.createNomination(getNominationID(),reason,getRadioValue(process))
     }
 
     private fun getNominationID(): String {

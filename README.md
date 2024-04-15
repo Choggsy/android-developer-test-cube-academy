@@ -1,73 +1,70 @@
-# Cube Academy - Android Task
+# Bonus - Improvements/Other Features
 
 ## Task
+There were some aspects of the app i ran out of time to complete. Such as having the nomination list
+be specific to the logged in user. I made note by these features and left a brief description of
+either what blocked me or how i would have implemented this with more time.
 
-As part of your assessment, you are required to complete an android application with the given UI design and API document. The app will have a basic skeleton already implemented for your convenience, but there are parts of the code that needs implementation. These parts have been marked with TODO comments.
+-	View their current month's nomination [tick]
+-	Create a nomination [tick]
 
-### The app will include the following features:
+But i've created at least the minimal product and tried to stay as faithful to the figma
+designs were possible.
 
--	View their current month's nomination
--	Create a nomination
+If i had more time i would have liked to unit test the additional classes I made and add UI testing,
+I did some reading on Espresso and would have loved to get that working on this project.
 
-#### Useful links
-- Designs: [Figma](https://www.figma.com/file/BAOzJacpI4IemeawyFlw5j/Mobile-Mini-Task-flow?type=design&node-id=2818-8902&mode=design&t=31N76gmtRrCVHnj9-4)
-- API documentation: [OpenAPI docs](https://cube-academy-api.cubeapis.com/docs)
+## Additional features the app could use:
 
-### API requests
+### Delete Nominations
 
-Please read the [OpenAPI docs](https://cube-academy-api.cubeapis.com/docs) documentation before beginning.
+could be on the Main Activity board to swipe animation deleted nominations which the user made
 
-You need to include an Authorization header to your API calls after you successfully register and login the user. The API uses a Bearer token for Authorization.
+### Edit Nominations
 
-** Since we don't have a login page, you need to call the register/login endpoint from a software like postman and store the returned Auth Token in the gradle.properties. We have left an empty variable in there for you **
+on the Main Activity, an icon or popup menu with the actions for that nomination like edit - edit
+page would look very similar to the submit nomination page.
 
-### Your contribution
-As stated earlier, parts of the code that require your implementation are marked with a TODO comment. These parts include:
-- On the first screen:
-  - You should populate the data of the nominations recycler view from the data taken from the api. (You should know that for new users, the data fetched from the api will be empty and therefore the empty screen should be shown. But after you create new nominations, these should show up in the list)
-- On the second screen:
-  - You should add the input controllers to the screen's xml file. Again, the boilerplate part of the ui has already been added, and parts of the xml file that requires your code has been marked with TODO comments. You need to make sure that your implementation matches the given figma designs. 
-  - You should add logic to the controllers in the activity class
-  - You should use the api to send the user's input and create a new nomination
-- On the third screen:
-  - You should add action logic to the two action buttons at the bottom of the screen. One should start another "Create nomination" form and the second should exit to the first screen. 
-- As part of the logic of the code, the basic DI modules and the retrofit instance and endpoints have already been defined, but they are not being used. 
-  - You should update the [Repository] class to work with the API.
+### Get Nomination by ID
 
-### What do we expect from the app? 
-- The app should demonstrate good use of Kotlin technologies. 
-- We're looking for organised, clean, readable and documented code. Make sure you structure the files cleanly and define the classes and functions in a readable way. 
-- Try to add comments about your decisions. Communicate with us about your choices and reasoning. 
-- Before reviewing the code, we start and test the app. So make sure you do enough testing to be confident of the app's performance. 
-- Good use of Android resources (themes, dimens, styles, strings, colors, etc.)
-- Good use of the skeleton structure already defined
-- Use git
+### User Dashboard
 
-### Important note
-You are responsible for providing a clean and efficient answer. 
-- If you need to add new models, new files, new helper functions, etc. you are allowed to do so. 
-- If you think what we have done isn't the best approach, you can let us know with a comment. 
-- If you feel the need to change a part of the code that was given to you for any reason, please explain why in your comments.  
+Create user dashboard which could contain feature like:
 
-### Bonus
-#### The following points are bonus tasks. They’re not necessary, but we would love to see your take on them. 
-- Automated testing - We have put some empty test functions in the Instrumented testing module with TODO comments. If you have time, please try to add some good tests in those functions.  
-- Create a text document and write up other features that you think this app could use. What have we missed? Where have we gone wrong in our idea? What else would be useful? You can come up with ideas around the UX of the app, the API that we use, other methods in voting, logic issues, future problems or bugs, constraints, etc. 
-- Error handling - Try to implement a good error handling method for different possible errors the user might see from API errors to network or any other possible ones 
-- Make sure your code has the least amount of warnings and errors in the logical, and also in the IDE (No unused variables, unused imports, obsolete code, etc.)
+- The Nominations they have left that month (if you'd like to give them an allowance of like 3
+  nominations.)
+- Any Employee of the month achievements they have received- highlighted on their dashboard.
 
-### The task will be marked on the following aspects:
--	Technical ability - How good the code quality is?
--	Attention to detail - How close does it look to the designs?
--	Organisational skills - How clean and readable the code is? 
--	Overall solution - does it accomplish the task and how well?
+### Year Recap of Cube of the month
 
-## Submission
-For submission, fork this repository and send us the link to your git repository to [cubeacademy@3sidedcube.com](mailto:cubeacademy@3sidedcube.com?subject=Cube%20Academy%20Test)
-(If you don't like to use github, you can simply clone this project and copy the files into your favorite repository and give us the url to that. Just make sure we have access to it.)
+- A way to reflect on final nominee with the Cube of the Month over the course of a year. I imagine
+  structures like a list of the months in the year 2024. With the name and picture of the person who
+  got Cube of the month that month. With a graphic disabling the upcoming month. with a button to
+  make a nomination on the current month nominations are taking place.
 
-## Questions?
+### App Navigation
 
-If you have any questions about any of the above please get in touch with us at [cubeacademy@3sidedcube.com](mailto:cubeacademy@3sidedcube.com?subject=Cube%20Academy%20Test)
+- Additional Views would require a navigation system, a Sticky Navigation bar as part of the Top
+  black header best minimal change because it is consistent on the Home Screen designs and the
+  Nomination Flow. Although I wouldn't recommend it as the best HCI approach since it reads more as
+  a website than an application interface choice.
 
+### Appreciation Notes
 
+- If user can only give one nomination a month, have a way for them to show appreciation to their
+  colleagues which doesn't use their 1 nomination. Could be a separate page similar to the figma
+  designs with 'Appreciation notes' or since the user must login; notes which only they(and their
+  manager for feedback) can see.
+
+### Additional Validation
+
+- At the moment a user can make multiple Nominations for the same Nominee within a month(As Seen on
+  01.00 Home Screen in the figma). This would make the nominations received potentially unfair as A
+  user can vote for the same person an infinite amount of times
+
+- Validate that a user can not make nominations for themselves.
+
+- The Reasoning should be Mandatory and there is a maximum number of characters but there isn't a
+  minimum number character, I would enforce this to prevent people just quickly making nominations
+  of no substance. The reason provided would be good data to provide the Nominee as Feedback. So
+  this field should be informed to require a set minimum word count
