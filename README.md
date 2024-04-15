@@ -5,8 +5,8 @@ There were some aspects of the app i ran out of time to complete. Such as having
 be specific to the logged in user. I made note by these features and left a brief description of
 either what blocked me or how i would have implemented this with more time.
 
--	View their current month's nomination [tick]
--	Create a nomination [tick]
+-	View their current month's nomination [✔]
+-	Create a nomination [✔]
 
 But i've created at least the minimal product and tried to stay as faithful to the figma
 designs were possible.
