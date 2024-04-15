@@ -10,7 +10,6 @@ import com.cube.cubeacademy.R
 import com.cube.cubeacademy.databinding.ActivityMainBinding
 import com.cube.cubeacademy.lib.adapters.NominationsRecyclerViewAdapter
 import com.cube.cubeacademy.lib.di.Repository
-import com.cube.cubeacademy.lib.models.Nomination
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
@@ -49,27 +48,21 @@ class MainActivity : AppCompatActivity() {
      * 		 You need to fetch the list of user's nominations from the api and put the data in the recycler view
      */
     private fun populateUI() {
-//        val nominationList = runBlocking { repository.getAllNominations()}
-        val nominationList = runBlocking { listOf(Nomination("nominationId","nomineeid","good reason","p","d1","d2")) }
-        val viewById = findViewById<RecyclerView>(R.id.nominations)
-        recycler = viewById
-        nominationsRecyclerViewAdapter = NominationsRecyclerViewAdapter()
+        val nominationList = runBlocking { repository.getAllNominations()}
+//        val nominationList = emptyList<Nomination>()
+//        val nominationList = listOf(Nomination("nominationId", "nomineeid", "good reason", "p", "d1", "d2"))
 
-//        recycler.apply {
-//            layoutManager = LinearLayoutManager(this@MainActivity)
-//            adapter = nominationsRecyclerViewAdapter
-//        }
+
+        recycler = findViewById(R.id.nominations)
+        nominationsRecyclerViewAdapter = NominationsRecyclerViewAdapter()
+        nominationsRecyclerViewAdapter.submitList(nominationList)
 
         recycler.setAdapter(nominationsRecyclerViewAdapter)
-        nominationsRecyclerViewAdapter.submitList(nominationList)
-        findViewById<RecyclerView>(R.id.nominations_list).isVisible = true
-        findViewById<RecyclerView>(R.id.empty_nomination_container).isVisible = false
+
+        if (!nominationList.isNullOrEmpty()) {
+            findViewById<RecyclerView>(R.id.nominations_list).isVisible = true
+            findViewById<RecyclerView>(R.id.empty_nomination_container).isVisible = false
+        }
 
     }
-
-//    yViewModel viewModel = new ViewModelProvider(this).get(MyViewModel.class);
-//        RecyclerView recyclerView = findViewById(R.id.user_list);
-//        UserAdapter<User> adapter = new UserAdapter();
-//        viewModel.usersList.observe(this, list -> adapter.submitList(list));
-//        recyclerView.setAdapter(adapter);
 }

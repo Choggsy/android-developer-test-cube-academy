@@ -154,18 +154,7 @@
                     android:orientation="vertical">
 
                     <RadioButton
-                        android:id="@+id/radio_unfair"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:drawableLeft="@drawable/very_unfair"
-                        android:layoutDirection="rtl"
-                        android:text="@string/unfair"
-                        tools:ignore="RtlHardcoded" />
-
-
-                    <RadioButton
-                        android:id="@+id/radio_very_unfair"
+                        android:id="@+id/very_unfair"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -175,7 +164,17 @@
                         tools:ignore="RtlHardcoded" />
 
                     <RadioButton
-                        android:id="@+id/radio_unsure"
+                        android:id="@+id/unfair"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/very_unfair"
+                        android:layoutDirection="rtl"
+                        android:text="@string/unfair"
+                        tools:ignore="RtlHardcoded" />
+
+                    <RadioButton
+                        android:id="@+id/un_sure"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -185,7 +184,7 @@
                         tools:ignore="RtlHardcoded" />
 
                     <RadioButton
-                        android:id="@+id/radio_fair"
+                        android:id="@+id/fair"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -195,7 +194,7 @@
                         tools:ignore="RtlHardcoded" />
 
                     <RadioButton
-                        android:id="@+id/radio_very_fair"
+                        android:id="@+id/very_fair"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"

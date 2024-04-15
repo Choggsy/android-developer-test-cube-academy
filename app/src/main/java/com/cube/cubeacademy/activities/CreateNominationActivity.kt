@@ -51,11 +51,13 @@ class CreateNominationActivity : AppCompatActivity() {
         val submitButton = binding.submitButton
         submitButton.setOnClickListener {
             if (isReasonEntered && isRadioEntered && isNomineeEntered) {
-                NewNomination(repository, binding).create(radioButton.getText().toString())
+                NewNomination(repository, binding).create(radioButton.text.toString())
                 startActivity(Intent(this, NominationSubmittedActivity::class.java))
             }
         }
     }
+
+
 
     private fun dropDownListener() {
         binding.nomineeNameSpinner.onItemSelectedListener =
@@ -95,7 +97,7 @@ class CreateNominationActivity : AppCompatActivity() {
             if (isReasonEntered || isRadioEntered || isNomineeEntered) {
                 val modal = LeaveNomination()
                 supportFragmentManager.let { modal.show(it, "ModalBottomSheetDialog") }
-            }else{
+            } else {
                 startActivity(Intent(this, MainActivity::class.java))
             }
         }

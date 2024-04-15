@@ -1,6 +1,7 @@
 package com.cube.cubeacademy.lib.di
 
 import com.cube.cubeacademy.lib.api.ApiService
+import com.cube.cubeacademy.lib.models.DataWrapper
 import com.cube.cubeacademy.lib.models.Nomination
 import com.cube.cubeacademy.lib.models.Nominee
 import kotlinx.coroutines.runBlocking
@@ -8,10 +9,11 @@ import java.time.LocalDate
 import java.util.stream.IntStream
 
 class Repository(val api: ApiService) {
-    // TODO: Add additional code if you need it :: TRY TO USE FOR THE NOMINATION ID
+    // TODO: Add additional code if you need it
 
 //    - As part of the logic of the code, the basic DI modules and the retrofit instance and endpoints have already been defined, but they are not being used.
 //  - You should update the [Repository] class to work with the API.
+
 
     suspend fun getAllNominations(): List<Nomination> {
         return api.getAllNominations().data
@@ -21,25 +23,22 @@ class Repository(val api: ApiService) {
         return api.getAllNominees().data;
     }
 
+    fun createNomination(nomineeId: String, reason: String, process: String){
+        val processValidResponses = listOf("very_unfair", "unfair", "not_sure", "fair", "very_fair")
+        if(!processValidResponses.contains(process)){
+            throw Exception("the process $process was not one of these values: $processValidResponses")
+        }else{
+            runBlocking { api.createNomination(nomineeId, reason, process)}
+        }
+    }
+
+    //Process: com.cube.cubeacademy, PID: 10791  retrofit2.HttpException: HTTP 422
+
     fun getNomineeNameList(): MutableList<String> {
         val nameList = mutableListOf<String>()
         runBlocking {
             this@Repository.getAllNominees()
                 .forEach { nominee: Nominee -> nameList.add(nominee.firstName.plus(" ").plus(nominee.lastName)) } }
         return nameList
-    } //extracted out of the dropdown spinner cause it could be reused.
-
-    fun createNomination(nomineeId: String, reason: String, process: String): Nomination {
-        val createDate = LocalDate.now(); //done this way to increment based of last in api list of nominations.
-        return Nomination(
-            "", //FIXME :: Get the nominationID from the user logged in as they are the ones Nominating the Nominee
-            nomineeId,
-            reason,
-            process,
-            createDate.toString(),
-            createDate.plusMonths(1).withDayOfMonth(1).toString()
-        )
-        // I Chose to set the close date to the first of the month after of the date nomination created. As these are monthly employee nominations, so would close by the start of the next month.
-        // I set that are a variable in case microsecond discrepancy causes issue as it does for LocalDateTime
-    }
+    } //note: extracted out of the dropdown spinner cause it could be reused. maybe if the nomination spinner was included within the app
 }
